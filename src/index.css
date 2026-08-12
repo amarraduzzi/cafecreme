@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-cinzel: 'Cinzel', serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+  }
+  
+  body {
+    font-family: var(--font-sans);
+    background-color: #12100E;
+    color: #F3EFE6;
+    overflow-x: hidden;
+  }
+}
+
+.font-display {
+  font-family: var(--font-cinzel);
+}
+
+/* Custom Vintage Neon Sign Effect */
+.neon-sign {
+  color: #FFF8E7;
+  text-shadow:
+    0 0 4px #FFF,
+    0 0 11px #FBBF24,
+    0 0 19px #F59E0B,
+    0 0 40px #D97706,
+    0 0 80px #B45309;
+}
+
+/* Warm Gold Backlit Glow Effect (subtle illuminated facade sign style) */
+.gold-backlit {
+  color: #FFF8E7;
+  text-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.95),
+    0 0 12px rgba(0, 0, 0, 0.85),
+    0 0 18px rgba(217, 155, 38, 0.7),
+    0 0 35px rgba(217, 155, 38, 0.4);
+}
+
+.neon-sign-subtle {
+  color: #FDE68A;
+  text-shadow:
+    0 0 5px rgba(251, 191, 36, 0.6),
+    0 0 15px rgba(245, 158, 11, 0.4);
+}
+
+.neon-border {
+  box-shadow:
+    0 0 8px rgba(251, 191, 36, 0.3),
+    inset 0 0 8px rgba(251, 191, 36, 0.2);
+  border-color: #FBBF24;
+}
+
+.neon-teal {
+  color: #E0F2FE;
+  text-shadow:
+    0 0 4px #FFF,
+    0 0 10px #38BDF8,
+    0 0 25px #0284C7;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1C1917;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #44403C;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D99B26;
+}
+
+/* ==========================================================================
+   Hero Opening Animation & Ken Burns Continuous Zoom
+   ========================================================================== */
+
+/* Continuous slow background zoom */
+@keyframes heroKenBurns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.06);
+  }
+}
+
+.hero-kenburns {
+  animation: heroKenBurns 22s ease-in-out infinite alternate;
+  transform-origin: center 20%;
+}
+
+/* Dim overlay fading out as sign turns on */
+@keyframes heroDimFadeOut {
+  0% {
+    opacity: 0.75;
+  }
+  30% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.hero-dim-overlay {
+  animation: heroDimFadeOut 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Facade sign radial warm gold light pulse */
+@keyframes facadeSignLightUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  40% {
+    opacity: 0.45;
+  }
+  75% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-facade-glow {
+  background: radial-gradient(
+    circle at 50% 16%,
+    rgba(255, 248, 231, 0.35) 0%,
+    rgba(245, 158, 11, 0.25) 25%,
+    rgba(217, 155, 38, 0.1) 50%,
+    transparent 75%
+  );
+  animation: facadeSignLightUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered content reveal keyframe */
+@keyframes heroRevealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-reveal {
+  opacity: 0;
+  animation: heroRevealUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-eyebrow {
+  animation-delay: 0.85s;
+}
+
+.delay-title {
+  animation-delay: 1.05s;
+}
+
+.delay-subtitle {
+  animation-delay: 1.2s;
+}
+
+.delay-stats {
+  animation-delay: 1.32s;
+}
+
+.delay-quote {
+  animation-delay: 1.44s;
+}
+
+.delay-cta {
+  animation-delay: 1.56s;
+}
+
+.delay-bottom {
+  animation-delay: 1.68s;
+}
+
+/* Reduced Motion Override for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-kenburns {
+    animation: none !important;
+    transform: scale(1) !important;
+  }
+  .hero-dim-overlay {
+    display: none !important;
+  }
+  .hero-facade-glow {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .animate-hero-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

@@ -1,0 +1,6 @@
+{
+  "name": "Café Crème",
+  "description": "Vintage & eclectic bistro-café in Rabat, Morocco. Serving specialty coffee, artisan smoothies, Moroccan brunch tajines, craft burgers, and sweet/savory crêpes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
